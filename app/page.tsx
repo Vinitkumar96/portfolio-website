@@ -5,13 +5,16 @@ import Stack from "@/components/comonent/stack";
 import Project from "@/components/comonent/project";
 import Social from "@/components/comonent/social"
 import FooterVinit from "@/components/comonent/footerVinit";
+import { FlipWords } from "@/components/ui/flip-words";
 
+
+const words = ["Engineer", "Fullstack dev", "Web dev", "Mobile dev", "devops"];
 
 const page = () => {
   return (
     <div className=" w-full min-h-screen pt-6 instrument-serif max-md:p-1 pb-0">
       <div className=" w-full border-y-2 border-neutral-800 border-dashed   ">
-        <div className=" relative max-w-2xl mx-auto bg-gray-800/10 py-18 text-center instrument-serif text-2xl  bg-dots my-2">
+        <div className=" relative max-w-2xl mx-auto  py-18 text-center instrument-serif text-2xl  bg-dots my-2">
           <p className="brightness-200 absolute top-[40%] left-[50%] ">
             wasupppp ?
           </p>
@@ -21,9 +24,9 @@ const page = () => {
 
       {/* top section */}
       <div className="max-w-2xl mx-auto border-x-2 border-neutral-800 border-dashed  py-6 px-4">
-        <div className=" border-x  rounded-2xl border-neutral-600/70 p-6  border-t border-t-neutral-600/40">
+        <div className=" bg-neutral-900/20 border-x  rounded-2xl border-neutral-600/70 p-6  border-t border-t-neutral-600/40">
           <div className="flex flex-col md:flex-row">
-            <div className="flex-1 border border-border rounded-[12px] p-[4px] cursor-pointer hover:brightness-90 transition duration-300 max-md:w-fit">
+            <div className=" bg-neutral-900 flex-1 border border-border rounded-[12px] p-[4px] cursor-pointer hover:brightness-90 transition duration-300 max-md:w-fit">
               <Image
                 src="/v.png"
                 width={80}
@@ -34,7 +37,7 @@ const page = () => {
             </div>
 
             <div className="flex-5 pt-2 md:pt-0 md:pl-4  flex-col  ">
-              <h1 className="text-3xl font-semibold m-0 p-0 instrument-serif mb-0.5 flex items-center gap-2 ">
+              <h1 className="text-3xl font-semibold  instrument-serif mb-0.5 flex items-center gap-2  ">
                 Vinit kumar
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -51,10 +54,10 @@ const page = () => {
                   ></path>
                 </svg>
               </h1>
-              <p className="text-xl tracking-wide text-neutral-300 md:pl-1  ">
-                Fullstack dev
-              </p>
-              <p className="text-sm text-neutral-400 md:pl-1  font-mono ">
+              <div className="text-xl  text-neutral-300   ">
+                <FlipWords words={words} />
+              </div>
+              <p className="text-sm text-neutral-400   font-mono ">
                 I build and ship products at high speed, putting in the hours to
                 turn ideas into working software
               </p>

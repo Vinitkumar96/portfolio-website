@@ -78,11 +78,11 @@ const stackList = [
 
 const Stack = () => {
   return (
-    <div className="flex flex-wrap justify-center items-center rounded-2xl border-neutral-600/70 p-2  border-t border-t-neutral-600/40 mb-4 md:pt-6 pt-4 px-1">
+    <div className="bg-neutral-900/20 border-x flex flex-wrap justify-center items-center rounded-2xl border-neutral-600/70 p-2  border-t border-t-neutral-600/40 mb-4 py-2  px-1">
      {
       stackList.map((s,i) => {
         return(
-          <div key={i} className="bg-[#0A0A0A] rounded-xl p-1 m-1 flex items-center gap-1  border cursor-pointer border-dashed hover:border-neutral-600 transition-all  ">
+          <div key={i} className="bg-neutral-900/30 rounded-xl p-1 px-2 m-1 flex items-center gap-1  border cursor-pointer border-dashed hover:border-neutral-600 transition-all  ">
             {s.ic}
             <p className="text-[12px] font-mono">{s.name} </p>
           </div>
