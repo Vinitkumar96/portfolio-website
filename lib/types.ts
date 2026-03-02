@@ -21,4 +21,5 @@ export interface Project {
   description: string;
   liveUrl?: string;
   githubUrl?: string;
+  gradientColor: string;
 }

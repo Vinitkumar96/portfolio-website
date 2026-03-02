@@ -32,14 +32,14 @@ const page = () => {
             </div>
 
             <div className="flex-5 pt-2 md:pt-0 md:pl-4 flex-col">
-              <h1 className="text-3xl font-semibold instrument-serif mb-0.5 flex items-center gap-2">
+              <h1 className="text-3xl font-semibold instrument-serif  mb-0.5 flex items-center gap-2">
                 Vinit kumar
                 <VerifiedIcon className="mt-1" />
               </h1>
-              <div className="text-xl  text-neutral-300   ">
+              <div className="text-[16px] pl-0.5  text-neutral-300   ">
                 <FlipWords words={words} />
               </div>
-              <p className="text-sm text-neutral-400   font-mono ">
+              <p className="text-sm text-neutral-400 pl-0.5   font-mono ">
                 I build and ship products at high speed, putting in the hours to
                 turn ideas into working software
               </p>
