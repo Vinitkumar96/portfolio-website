@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -14,19 +14,12 @@ export const Tooltip = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [mouse, setMouse] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-  const [height, setHeight] = useState(0);
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
   });
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (isVisible && contentRef.current) {
-      setHeight(contentRef.current.scrollHeight);
-    }
-  }, [isVisible, content]);
 
   const calculatePosition = (mouseX: number, mouseY: number) => {
     if (!contentRef.current || !containerRef.current)
@@ -79,6 +72,7 @@ export const Tooltip = ({
   };
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouchDevice()) return; // Skip tooltip on touch devices
     setIsVisible(true);
     const rect = e.currentTarget.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
@@ -87,62 +81,25 @@ export const Tooltip = ({
   };
 
   const handleMouseLeave = () => {
+    if (isTouchDevice()) return;
     setMouse({ x: 0, y: 0 });
     setPosition({ x: 0, y: 0 });
     setIsVisible(false);
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isVisible) return;
+    if (!isVisible || isTouchDevice()) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     updateMousePosition(mouseX, mouseY);
   };
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    const touch = e.touches[0];
-    const rect = e.currentTarget.getBoundingClientRect();
-    const mouseX = touch.clientX - rect.left;
-    const mouseY = touch.clientY - rect.top;
-    updateMousePosition(mouseX, mouseY);
-    setIsVisible(true);
+  // On touch devices, don't show tooltip - let clicks pass through to anchor tags
+  const isTouchDevice = () => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(hover: none)").matches;
   };
-
-  const handleTouchEnd = () => {
-    // Delay hiding to allow for tap interaction
-    setTimeout(() => {
-      setIsVisible(false);
-      setMouse({ x: 0, y: 0 });
-      setPosition({ x: 0, y: 0 });
-    }, 2000);
-  };
-
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Toggle visibility on click for mobile devices
-    if (window.matchMedia("(hover: none)").matches) {
-      e.preventDefault();
-      if (isVisible) {
-        setIsVisible(false);
-        setMouse({ x: 0, y: 0 });
-        setPosition({ x: 0, y: 0 });
-      } else {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        updateMousePosition(mouseX, mouseY);
-        setIsVisible(true);
-      }
-    }
-  };
-
-  // Update position when tooltip becomes visible or content changes
-  useEffect(() => {
-    if (isVisible && contentRef.current) {
-      const newPosition = calculatePosition(mouse.x, mouse.y);
-      setPosition(newPosition);
-    }
-  }, [isVisible, height, mouse.x, mouse.y]);
 
   return (
     <div
@@ -151,17 +108,14 @@ export const Tooltip = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onClick={handleClick}
     >
       {children}
       <AnimatePresence>
         {isVisible && (
           <motion.div
             key={String(isVisible)}
-            initial={{ height: 0, opacity: 1 }}
-            animate={{ height, opacity: 1 }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{
               type: "spring",
