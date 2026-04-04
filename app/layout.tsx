@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono,Playfair_Display,Instrument_Serif, Roboto_Slab } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes"
-import { ScrollProgress } from "@/components/ui/scroll-progress"
+import { ThemeProvider } from "next-themes";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { SiteChrome } from "@/components/site";
 
 
 const geistSans = Geist({
@@ -49,14 +50,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${instrumentSerif.variable} ${robotoSlab.variable} antialiased`}
       >
-         <ThemeProvider 
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <ScrollProgress />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SiteChrome />
+          <ScrollProgress />
+          {children}
         </ThemeProvider>
       </body>
     </html>

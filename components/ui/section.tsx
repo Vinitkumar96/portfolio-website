@@ -9,7 +9,7 @@ interface SectionCardProps {
 export const SectionCard = ({ children, className }: SectionCardProps) => (
   <div
     className={cn(
-      "bg-neutral-900/20 border-x rounded-2xl border-neutral-600/70 border-t border-t-neutral-600/40",
+      "rounded-xl border border-neutral-300 border-t-neutral-300/35 border-x bg-neutral-300/10 dark:bg-neutral-900/20 dark:border-neutral-600/70 dark:border-t-neutral-600/40",
       className,
     )}
   >
@@ -30,8 +30,9 @@ export const SectionContainer = ({
 }: SectionContainerProps) => (
   <div
     className={cn(
-      "max-w-2xl mx-auto py-6 px-4",
-      withBorder && "border-x-2 border-neutral-800 border-dashed",
+      "max-w-2xl mx-auto py-2 px-2",
+      withBorder &&
+        "border-x-2 border-dashed border-neutral-800/90 dark:border-neutral-600/80",
       className,
     )}
   >
