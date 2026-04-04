@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { projects } from "@/data";
 import { LinkIcon, GithubIcon } from "@/components/icons";
 import type { Project } from "@/lib/types";
@@ -12,13 +13,20 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  const hoverGradientEnd =
+    mounted && resolvedTheme === "light" ? "#f4f4f5" : "#0a0a0a";
 
   return (
     <div
-      className="bg-neutral-900/20 w-full border border-neutral-800 rounded-xl cursor-pointer group pt-2 transition-all duration-300"
+      className="group w-full cursor-pointer rounded-xl border border-neutral-300/90 bg-neutral-100/50 pt-2 transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-900/20"
       style={{
         background: isHovered
-          ? `linear-gradient(to bottom, ${project.gradientColor}, #0a0a0a 30%, #0a0a0a)`
+          ? `linear-gradient(to bottom, ${project.gradientColor}, ${hoverGradientEnd} 32%, ${hoverGradientEnd})`
           : undefined,
       }}
       onMouseEnter={() => setIsHovered(true)}
@@ -30,7 +38,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           width={300}
           height={100}
           alt={`${project.title} thumbnail`}
-          className="w-[95%]  rounded-t-lg translate-y-5  group-hover:-translate-y-1 transform transition-all duration-300 group-hover:shadow-2xl shadow-black "
+          className="w-[95%]  rounded-lg translate-y-5  group-hover:-translate-y-1 transform transition-all duration-300  "
         />
       </div>
 
@@ -39,27 +47,30 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           <h2 className="text-xl instrument-serif py-1 z-20">
             {project.title}
           </h2>
-          <p className="text-sm text-neutral-300 roboto-slab">
+          <p className="roboto-slab text-[11px] text-neutral-500 dark:text-neutral-300 mb-1.5  ">
             {project.tools.map((tool, index) => (
-              <span key={tool}>
-                {index !== project.tools.length - 1 ? `${tool} / ` : tool}
+              <span
+                key={tool}
+                className="bg-white dark:bg-neutral-800  border border-neutral-300 dark:border-neutral-500 mr-1 rounded  px-1.5 border-dashed "
+              >
+                {tool}
               </span>
             ))}
           </p>
         </div>
 
         <div>
-          <p className="mb-1 text-neutral-400 roboto-slab text-sm">
+          <p className="roboto-slab mb-1 text-sm text-neutral-500 dark:text-neutral-400">
             {project.description}
           </p>
 
-          <div className="flex gap-3 pt-2 pl-1 roboto-slab text-neutral-400">
+          <div className="roboto-slab flex gap-3 pl-1 pt-2 text-neutral-500 dark:text-neutral-400">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-neutral-200 transition-colors"
+                className="transition-colors hover:text-foreground dark:hover:text-neutral-200"
               >
                 <LinkIcon />
               </a>
@@ -69,7 +80,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-neutral-200 transition-colors"
+                className="transition-colors hover:text-foreground dark:hover:text-neutral-200"
               >
                 <GithubIcon />
               </a>

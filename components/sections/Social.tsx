@@ -12,7 +12,7 @@ const SocialPreviewCard = ({ src, alt }: SocialPreviewCardProps) => (
     <img
       src={src}
       alt={alt}
-      className="rounded-sm border-t-2 border-l-2 border-neutral-300"
+      className="rounded-sm border-l-2 border-t-2 border-neutral-300 dark:border-neutral-600"
     />
   </div>
 );
@@ -20,7 +20,7 @@ const SocialPreviewCard = ({ src, alt }: SocialPreviewCardProps) => (
 const Social = () => {
   return (
     <SectionCard className="mb-4 px-8">
-      <div className="font-serif text-neutral-300 flex items-center md:space-x-6 space-x-2 justify-center cursor-pointer">
+      <div className="flex cursor-pointer items-center justify-center space-x-2 font-serif text-neutral-700 md:space-x-6 dark:text-neutral-300">
         {socialLinks.map((link) => (
           <a
             key={link.name}

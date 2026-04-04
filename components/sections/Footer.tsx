@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="flex justify-center items-center">
-      <h1 className="bg-neutral-900 instrument-serif md:text-[80px] text-[40px] overflow-hidden italic tracking-tighter opacity-15 whitespace-nowrap bg-linear-to-r from-transparent via-neutral-500 to-transparent bg-clip-text text-transparent md:px-2 px-1">
+      <h1 className="instrument-serif px-1 md:px-2 overflow-hidden bg-linear-to-r from-transparent via-neutral-600 to-transparent bg-clip-text  text-[40px] text-transparent italic tracking-tighter opacity-[0.38] whitespace-nowrap dark:via-neutral-500  md:text-[80px]">
         Stay Hungry Stay foolish
       </h1>
     </footer>

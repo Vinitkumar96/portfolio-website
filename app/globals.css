@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "react-activity-calendar/tooltips.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -67,10 +68,29 @@
 .bg-dots {
   background-image: radial-gradient(
     circle,
-    rgb(115 115 115 / 0.2) 1px,
+    rgb(115 115 115 / 0.32) 1px,
     transparent 1px
   );
   background-size: 7px 7px;
+}
+
+.dark .bg-dots {
+  background-image: radial-gradient(
+    circle,
+    rgb(180 180 180 / 0.18) 1px,
+    transparent 1px
+  );
+}
+
+/* react-activity-calendar uses an inner scroll container with overflow-x: auto */
+.github-calendar-fit .react-activity-calendar__scroll-container {
+  overflow-x: hidden !important;
+}
+
+.github-calendar-fit .react-activity-calendar__scroll-container svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 :root {
