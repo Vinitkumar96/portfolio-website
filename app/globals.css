@@ -82,17 +82,6 @@
   );
 }
 
-/* react-activity-calendar uses an inner scroll container with overflow-x: auto */
-.github-calendar-fit .react-activity-calendar__scroll-container {
-  overflow-x: hidden !important;
-}
-
-.github-calendar-fit .react-activity-calendar__scroll-container svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);

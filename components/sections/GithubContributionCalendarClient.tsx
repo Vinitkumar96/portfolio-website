@@ -3,9 +3,7 @@
 import { ActivityCalendar, type Activity } from "react-activity-calendar";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-
-import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 /** Monochrome ramp: empty → dense (matches portfolio neutrals) */
 const theme = {
@@ -43,7 +41,6 @@ export function GithubContributionCalendarClient({
 
   const colorScheme = mounted && resolvedTheme === "light" ? "light" : "dark";
 
-
   if (data.length === 0) {
     return (
       <p className="px-4 py-6 text-center font-mono text-sm text-muted-foreground">
@@ -60,21 +57,23 @@ export function GithubContributionCalendarClient({
   }
 
   return (
-    <div className="github-calendar-fit w-full min-w-0 max-w-full px-1 pb-1 pt-2 sm:px-4">
-      <ActivityCalendar
-        data={data}
-        theme={theme}
-        colorScheme={colorScheme}
-        blockSize={12}
-        blockMargin={3}
-        blockRadius={2}
-        fontSize={12}
-        maxLevel={4}
-        labels={{
-          totalCount: "{{count}} contributions in {{year}}",
-        }}
-        showTotalCount={false}
-      />
+    <div className="w-full overflow-x-auto sm:overflow-x-hidden">
+      <div className="min-w-175 px-1 pb-1 pt-2 sm:min-w-0 sm:px-4">
+        <ActivityCalendar
+          data={data}
+          theme={theme}
+          colorScheme={colorScheme}
+          blockSize={10}
+          blockMargin={3}
+          blockRadius={2}
+          fontSize={12}
+          maxLevel={4}
+          labels={{
+            totalCount: "{{count}} contributions in {{year}}",
+          }}
+          showTotalCount={true}
+        />
+      </div>
     </div>
   );
 }
