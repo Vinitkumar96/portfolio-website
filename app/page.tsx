@@ -50,7 +50,7 @@ export default async function Page() {
                 <FlipWords words={words} />
               </div>
               <p className="pl-0.5 font-normal tracking-wider text-sm  md:text-[16px] text-neutral-500 dark:text-neutral-400">
-                I build and <span className="font-light text-neutral-200">ship products</span> at high speed, putting in the hours to
+                I build and <span className="font-light dark:text-neutral-200 text-neutral-900">ship products</span> at high speed, putting in the hours to
                 turn ideas into working software.
                 currently building projects for web and mobile and messing with devops and ai 
               </p>

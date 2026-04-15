@@ -7,7 +7,7 @@ export const projects: Project[] = [
     title: "Expense Tracker",
     tools: ["Expo", "Clerk", "Neondb"],
     description:
-      "This is a simple react native expense tracker where users can track money",
+      "Expense tracker where users can track money",
     liveUrl:
       "https://www.linkedin.com/posts/vinit-kumar-b14421378_shipped-a-fullstack-expense-tracker-mobile-activity-7433212489833603072-YfIL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF1SnwABSiX9x7UbT02ffKIxnapFyymd6Yo",
     githubUrl: "https://github.com/Vinitkumar96/expense-tracker-RN",
@@ -15,22 +15,23 @@ export const projects: Project[] = [
   },
   {
     id: "ecom-2",
-    thumbnail: "/p.png",
-    title: "ecom",
-    tools: ["html", "css", "js"],
+    thumbnail: "/turboshort.png",
+    title: "Turbo Short",
+    tools: ["Nextjs", "Nextauth", "prisma"],
     description:
-      "fsdfsdfds fsdf sdfdsf df df dfds f fsdf df df sdf sdf sdf sdfsdf sdf fsdf sd fsd f sdf sd",
-    liveUrl: "#",
-    githubUrl: "#",
-    gradientColor: "#3b82f6", // blue
+      "Paste your long Urls and get fast short links",
+    liveUrl: "https://turboshort.vercel.app",
+    githubUrl: "https://github.com/Vinitkumar96/turboshort",
+    // gradientColor: "#3b82f6", // blue,
+    gradientColor:"#64748b"
   },
   {
     id: "ecom-3",
     thumbnail: "/p.png",
-    title: "ecom",
+    title: "coming soon",
     tools: ["html", "css", "js"],
     description:
-      "fsdfsdfds fsdf sdfdsf df df dfds f fsdf df df sdf sdf sdf sdfsdf sdf fsdf sd fsd f sdf sd",
+      "some short description about the project",
     liveUrl: "#",
     githubUrl: "#",
     gradientColor: "#10b981", // emerald
@@ -38,10 +39,10 @@ export const projects: Project[] = [
   {
     id: "ecom-4",
     thumbnail: "/p.png",
-    title: "ecom",
+    title: "coming soon",
     tools: ["html", "css", "js"],
-    description:
-      "fsdfsdfds fsdf sdfdsf df df dfds f fsdf df df sdf sdf sdf sdfsdf sdf fsdf sd fsd f sdf sd",
+   description:
+      "some short description about the project",
     liveUrl: "#",
     githubUrl: "#",
     gradientColor: "#f97316", // orange
