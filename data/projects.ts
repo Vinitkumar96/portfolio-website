@@ -3,7 +3,7 @@ import type { Project } from "@/lib/types";
 export const projects: Project[] = [
   {
     id: "ecom-3",
-    thumbnail: "/buzzball.png",
+    thumbnail: "/buzz.png",
     title: "buzz qna",
     tools: ["Nextjs", "Nextauth", "prisma"],
     description: "ask anonymous questions to your friends",
