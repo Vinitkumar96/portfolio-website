@@ -33,7 +33,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="w-full flex justify-center mb-2">
+      <div className="w-full max-h-45 flex justify-center mb-2">
         <Image
           src={project.thumbnail}
           width={300}
@@ -43,52 +43,51 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         />
       </div>
 
-      <div className="px-2 pt-2 pb-1">
+      <div className="px-2 pt-2 pb-1 instrument-serif">
         <div>
-          <h2 className="text-xl instrument-serif pt-1.5 z-20">
+          <h2 className="text-xl  pt-1.5 z-20">
             {project.title}
           </h2>
-          <p className="roboto-slab mb-1 text-[15px] text-neutral-500 dark:text-neutral-400">
+          <p className=" text-[15px] text-black  tracking-wide  dark:text-neutral-200">
             {project.description}
           </p>
         </div>
 
-        <div className="pt-1 ">
-          <p className="roboto-slab text-[11px] text-neutral-500 dark:text-neutral-300 mb-1  ">
+        <div className="pt-1 flex  ">
+          <div className=" text-[11px] text-neutral-500 dark:text-neutral-300 mb-1  ">
             {project.tools.map((tool, index) => (
               <span
                 key={tool}
-                className="bg-white dark:bg-neutral-800/40  border border-neutral-200 dark:border-neutral-700 mr-1 rounded  px-1.5   "
+                className="bg-white dark:bg-neutral-800/40  border border-neutral-200 border-dashed dark:border-neutral-700 mr-1 rounded  px-1.5   "
               >
                 {tool}
               </span>
             ))}
-          </p>
 
-          <div className="roboto-slab flex gap-3 pl-1  text-neutral-500 dark:text-neutral-400">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm flex items-center gap-1 transition-colors hover:text-foreground dark:hover:text-neutral-200"
-              >
-                <RiExternalLinkFill /> {" Live"}
-              </a>
-            )}
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-sm  transition-colors hover:text-foreground dark:hover:text-neutral-200"
-              >
-                <FaGithub /> {" Github"}
-              </a>
-            )}
+            <div className=" flex gap-3 pl-1 mt-1  text-neutral-500 dark:text-neutral-400">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm flex items-center gap-1 transition-colors hover:text-foreground dark:hover:text-neutral-200"
+                >
+                  <RiExternalLinkFill /> {" Live"}
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-sm  transition-colors hover:text-foreground dark:hover:text-neutral-200"
+                >
+                  <FaGithub /> {" Github"}
+                </a>
+              )}
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   );

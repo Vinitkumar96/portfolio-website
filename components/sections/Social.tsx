@@ -20,7 +20,7 @@ const SocialPreviewCard = ({ src, alt }: SocialPreviewCardProps) => (
 const Social = () => {
   return (
     <SectionCard className="mb-4 px-8">
-      <div className="flex cursor-pointer items-center justify-center space-x-2 font-serif text-neutral-700 md:space-x-6 dark:text-neutral-300">
+      <div className="flex cursor-pointer items-center justify-center space-x-2 tracking-wider font-semibold text-neutral-800 md:space-x-6 dark:text-neutral-300">
         {socialLinks.map((link) => (
           <a
             key={link.name}
