@@ -7,7 +7,7 @@ export function SiteChrome({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "pointer-events-none fixed right-3 top-3 z-[60] sm:right-4 sm:top-4",
+        "pointer-events-none relative right-1  z-[60] ",
         className,
       )}
     >

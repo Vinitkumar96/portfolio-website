@@ -1,2 +1,2 @@
-export { stackItems, socialLinks } from "./profile";
+export { stackItems } from "./profile";
 export { projects } from "./projects";

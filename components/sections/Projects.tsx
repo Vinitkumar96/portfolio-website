@@ -39,7 +39,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           width={300}
           height={100}
           alt={`${project.title} thumbnail`}
-          className="w-[95%]  rounded-lg translate-y-5  group-hover:-translate-y-1 transform transition-all duration-300  "
+          className="w-[95%] grayscale group-hover:grayscale-0  rounded-lg translate-y-5  group-hover:-translate-y-1 transform transition-all duration-300  "
         />
       </div>
 
