@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { SiteChrome } from "@/components/site";
+import { Analytics } from "@vercel/analytics/next"
 
 
 const geistSans = Geist({
@@ -59,6 +60,7 @@ export default function RootLayout({
           <SiteChrome />
           <ScrollProgress />
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
