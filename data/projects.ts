@@ -9,7 +9,7 @@ export const projects: Project[] = [
     description: "ask anonymous questions to your friends",
     liveUrl: "https://buzzball.vercel.app",
     githubUrl: "https://github.com/Vinitkumar96/Buzzball",
-    gradientColor: "#10b981", // emerald
+    gradientColor: "#ffc0cb", // emerald
   },
   {
     id: "ecom-2",

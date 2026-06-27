@@ -133,7 +133,7 @@ export default function Page() {
           </Button>
           <Button variant="secondary">
             <Link
-              href={"https://www.youtube.com/"}
+              href={"https://www.linkedin.com/in/vinit-kumar-b14421378/"}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -142,7 +142,7 @@ export default function Page() {
           </Button>
           <Button variant={"secondary"}>
             <Link
-              href={"https://www.youtube.com/"}
+              href={"https://github.com/Vinitkumar96"}
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono,Playfair_Display,Instrument_Serif, Roboto_Slab } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Playfair_Display,
+  Instrument_Serif,
+  Roboto_Slab,
+} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { Analytics } from "@vercel/analytics/next"
-
+import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,21 +25,21 @@ const geistMono = Geist_Mono({
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
   subsets: ["latin"],
-  weight:["400"],
-  style:"italic"
+  weight: ["400"],
+  style: "italic",
 });
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   subsets: ["latin"],
-  weight:["400"],
+  weight: ["400"],
 });
 
 const robotoSlab = Roboto_Slab({
   variable: "--font-roboto-slab",
   subsets: ["latin"],
-  weight:["400"],
-})
+  weight: ["400"],
+});
 
 export const metadata: Metadata = {
   title: "Vinit kumar",
@@ -60,6 +66,11 @@ export default function RootLayout({
           {children}
           <Analytics />
         </ThemeProvider>
+        <Script
+          src="https://louisabraham.github.io/nekojs/neko.js"
+          data-autostart
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
