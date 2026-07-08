@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Stack, Projects, GithubContributions } from "@/components/sections";
+import {
+  Stack,
+  Projects,
+  Experience,
+  GithubContributions,
+} from "@/components/sections";
 import { FlipWords } from "@/components/ui/flip-words";
 import { VerifiedIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -15,10 +20,12 @@ export default function Page() {
   return (
     <div className="instrument-serif w-full min-h-screen max-md:p-1">
       {/* navbar */}
-      <div className="mx-auto max-w-3xl px-4 pt-3 border-neutral-300 dark:border-neutral-700/80 border-dashed border-x">
+      <div className="mx-auto max-w-2xl px-4 pt-3 border-neutral-300 dark:border-neutral-700/80 border-dashed border-x">
         <div className="flex items-center justify-between w-full">
           {/* Left*/}
-          <div className="instrument-serif text-xl font-semibold">Vinit.</div>
+          <Link href={"/"}>
+            <div className="instrument-serif text-xl font-semibold">Vinit.</div>
+          </Link>
 
           {/* Righ */}
           <div className="flex items-center gap-2">
@@ -37,17 +44,19 @@ export default function Page() {
       </div>
 
       {/* vinit kumar intro */}
-      <div className={`mx-auto max-w-3xl border-x ${edge} px-4 py-6`}>
+      <div className={`mx-auto max-w-2xl border-x ${edge} px-4 py-6`}>
         <div className="rounded-2xl border border-neutral-300 border-t-neutral-300/35 bg-neutral-300/10 p-6 dark:bg-neutral-900/20 dark:border-neutral-600/70 dark:border-t-neutral-600/40">
-          <div className="flex flex-col md:flex-row">
-            <div className="max-md:w-fit flex-1 cursor-pointer rounded-[12px] border border-border bg-neutral-300/60 p-[4px] transition duration-300 hover:brightness-90 dark:bg-neutral-900">
-              <Image
-                src="/vinitbabu.png"
-                width={80}
-                height={80}
-                alt="vinit pic"
-                className="rounded-[12px] grayscale transition-all duration-200 hover:rotate-3 md:w-full"
-              />
+          <div className="flex flex-col md:flex-row md:items-center">
+            <div className="group max-md:w-fit flex-1 cursor-pointer rounded-2xl border border-border bg-neutral-300/60 p-1 transition duration-300 hover:brightness-90 dark:bg-neutral-900">
+              <div className="relative h-24 w-24 overflow-hidden rounded-2xl md:h-auto md:w-full md:aspect-square">
+                <Image
+                  src="/vinitbabu.png"
+                  fill
+                  sizes="(max-width: 768px) 96px, 100vw"
+                  alt="vinit pic"
+                  className="object-cover grayscale"
+                />
+              </div>
             </div>
 
             <div className="flex-5 flex-col pt-2 md:pl-4 md:pt-0">
@@ -72,17 +81,17 @@ export default function Page() {
         </div>
       </div>
 
-      {/* expierence section pendinggggggggggggggggggggggggggggggggggg */}
+      <Experience />
 
       {/* projects part */}
       <div
         id="projects"
         className="w-full border-t border-dashed border-neutral-300 dark:border-neutral-700/80"
       >
-        <div className={`mx-auto max-w-3xl border-x ${edge} px-4 py-6`}>
+        <div className={`mx-auto max-w-2xl border-x ${edge} px-4 py-6`}>
           <div className="mb-2 flex items-center justify-between border-t border-dashed border-neutral-300 px-4 py-3 dark:border-neutral-600/80">
             <h2 className="instrument-serif text-2xl font-bold">Projects</h2>
-            <Link href="/proj">
+            <Link href="https://github.com/Vinitkumar96" target="_blank">
               <p className="group relative inline-flex items-center gap-1.5 px-4 py-2 font-mono text-xs text-neutral-600 transition-colors sm:px-5 sm:text-sm dark:text-neutral-300">
                 <span
                   className="absolute inset-0 opacity-[0.04] transition-opacity group-hover:opacity-[0.08]"
@@ -91,10 +100,10 @@ export default function Page() {
                       "repeating-linear-gradient(-45deg, transparent, transparent 4px, currentcolor 4px, currentcolor 5px",
                   }}
                 />
-                <span className="absolute -left-[6px] -right-[6px] top-0 h-px bg-foreground/20 transition-colors group-hover:bg-foreground/30" />
-                <span className="absolute -left-[6px] -right-[6px] bottom-0 h-px bg-foreground/20 transition-colors group-hover:bg-foreground/30" />
-                <span className="absolute -top-[6px] -bottom-[6px] left-0 w-px bg-foreground/20 transition-colors group-hover:bg-foreground/30" />
-                <span className="absolute -top-[6px] -bottom-[6px] right-0 w-px bg-foreground/20 transition-colors group-hover:bg-foreground/30" />
+                <span className="absolute -left-1.5 -right-1.5 top-0 h-px bg-foreground/20 transition-colors group-hover:bg-foreground/30" />
+                <span className="absolute -left-1.5 -right-1.5 bottom-0 h-px bg-foreground/20 transition-colors group-hover:bg-foreground/30" />
+                <span className="absolute -top-1.5 -bottom-1.5 left-0 w-px bg-foreground/20 transition-colors group-hover:bg-foreground/30" />
+                <span className="absolute -top-1.5 -bottom-1.5 right-0 w-px bg-foreground/20 transition-colors group-hover:bg-foreground/30" />
                 <span className="relative">View More </span>
               </p>
             </Link>
@@ -105,11 +114,9 @@ export default function Page() {
 
       {/* tools and github contribution */}
       <div className="w-full border-y border-dashed border-neutral-300 dark:border-neutral-700/80">
-        <div className={`mx-auto max-w-3xl border-x ${edge} px-4 pb-1 pt-4`}>
+        <div className={`mx-auto max-w-2xl border-x ${edge} px-4 pb-1 pt-4`}>
           <div>
-            <h2 className="instrument-serif  ml-4 text-xl">
-              I Tinker them
-            </h2>
+            <h2 className="instrument-serif  ml-4 text-xl">I Tinker them</h2>
             <Stack />
             <GithubContributions />
           </div>
@@ -119,10 +126,10 @@ export default function Page() {
       {/*connect with me section */}
       <div
         id="connect"
-        className={`text-center mx-auto max-w-3xl ${edge} pb-2 `}
+        className={`text-center mx-auto max-w-2xl ${edge} pb-2 `}
       >
         <p className="instrument-serif text-5xl py-2">Let's work together.</p>
-        <p className="instrument-serif text-md mb-2  max-w-2xl mx-auto text-neutral-300">
+        <p className="instrument-serif text-md mb-2  max-w-2xl mx-auto dark:text-neutral-300 text-neutral-800">
           I'm always looking forward to collaborating on exciting projects and
           exploring new opportunities. Feel free to reach out if you have an
           idea or simply want to chat about tech.
@@ -150,15 +157,15 @@ export default function Page() {
             </Link>
           </Button>
         </div>
-        <p className="text-neutral-300">
+        <p className="dark:text-neutral-300 text-neutral-800">
           Currently available for freelance work and full‑time opportunities
           Response time: Usually within 24 hours
         </p>
       </div>
 
       {/* f o o t e r baby */}
-      <div className="border max-w-3xl mx-auto rounded-sm py-2">
-        <div className="max-w-3xl mx-auto text-center ">
+      <div className="border max-w-2xl mx-auto rounded-sm py-2">
+        <div className="max-w-2xl mx-auto text-center ">
           <p className="text-neutral-600">Be hungry be foolish 😋</p>
         </div>
       </div>

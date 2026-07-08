@@ -43,7 +43,7 @@ const robotoSlab = Roboto_Slab({
 
 export const metadata: Metadata = {
   title: "Vinit kumar",
-  description: "",
+  description: "Portfolio website of vinit",
 };
 
 export default function RootLayout({

@@ -2,15 +2,25 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
 export function ThemeToggle({ className }: { className?: string }) {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+
+    audioRef.current = new Audio("/sounds/keystroke1.mp3");
+    audioRef.current.preload = "auto";
+
+    return () => {
+      audioRef.current = null;
+    };
+  }, []);
 
   if (!mounted) {
     return (
@@ -26,10 +36,21 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   const isDark = resolvedTheme === "dark";
 
+  const handleToggle = () => {
+    const sound = audioRef.current;
+
+    if (sound) {
+      sound.currentTime = 0;
+      void sound.play().catch(() => {});
+    }
+
+    setTheme(isDark ? "light" : "dark");
+  };
+
   return (
     <button
       type="button"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={handleToggle}
       className={cn(
         "group relative inline-flex h-9 w-9 items-center justify-center rounded-md border border-dashed border-neutral-800/70 bg-background/80 text-neutral-600 transition-colors hover:text-foreground dark:border-neutral-600/70 dark:text-neutral-300",
         className,

@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { projects } from "@/data";
 import type { Project } from "@/lib/types";
 import { RiExternalLinkFill } from "react-icons/ri";
@@ -13,41 +11,42 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const handleCardClick = () => {
+    if (!project.liveUrl || project.liveUrl === "#") {
+      return;
+    }
 
-  useEffect(() => setMounted(true), []);
-
-  const hoverGradientEnd =
-    mounted && resolvedTheme === "light" ? "#f4f4f5" : "#0a0a0a";
+    window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <div
-      className="group w-full cursor-pointer rounded-xl border border-neutral-300/90 bg-neutral-100/50 pt-2 transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-900/20"
-      style={{
-        background: isHovered
-          ? `linear-gradient(to bottom, ${project.gradientColor}, ${hoverGradientEnd} 32%, ${hoverGradientEnd})`
-          : undefined,
+      role="link"
+      tabIndex={0}
+      onClick={handleCardClick}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          handleCardClick();
+        }
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="grayscale hover:grayscale-25 w-full cursor-pointer rounded-xl border border-neutral-300/90 bg-neutral-100/50 p-2 transition-all  dark:border-neutral-800 dark:bg-neutral-900/20"
     >
-      <div className="w-full max-h-45 flex justify-center mb-2">
-        <Image
-          src={project.thumbnail}
-          width={300}
-          height={100}
-          alt={`${project.title} thumbnail`}
-          className="w-[95%] grayscale group-hover:opacity-85 group-hover:grayscale-0   rounded-lg translate-y-1  group-hover:-translate-y-1 transform transition-all duration-300  "
-        />
+      <div className="overflow-hidden rounded-lg p-2">
+        <div className="relative aspect-16/10 w-full overflow-hidden rounded-md bg-white/80 dark:bg-neutral-950/70">
+          <Image
+            src={project.thumbnail}
+            alt={`${project.title} thumbnail`}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover "
+          />
+        </div>
       </div>
 
       <div className="px-2 pt-2 pb-1 instrument-serif">
         <div>
-          <h2 className="text-xl  pt-1.5 z-20">
-            {project.title}
-          </h2>
+          <h2 className="text-xl  pt-1.5 z-20">{project.title}</h2>
           <p className=" text-[15px] text-black  tracking-wide  dark:text-neutral-200">
             {project.description}
           </p>
@@ -70,6 +69,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(event) => event.stopPropagation()}
                   className="text-sm flex items-center gap-1 transition-colors hover:text-foreground dark:hover:text-neutral-200"
                 >
                   <RiExternalLinkFill /> {" Live"}
@@ -80,6 +80,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(event) => event.stopPropagation()}
                   className="flex items-center gap-1 text-sm  transition-colors hover:text-foreground dark:hover:text-neutral-200"
                 >
                   <FaGithub /> {" Github"}
