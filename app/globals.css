@@ -164,9 +164,8 @@
 }
 
 @layer base {
-  * {
-    @apply border-b-2order outline-ring/50;
-  }
+  ;
+  
   body {
     @apply bg-background text-foreground;
   }

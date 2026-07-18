@@ -30,7 +30,7 @@ export function AvatarSwitcher() {
       type="button"
       onClick={handleSwitch}
       aria-label="Switch profile photo"
-      className="group relative max-md:w-fit flex-1 cursor-pointer rounded-2xl border border-b-2order bg-neutral-300/60 p-1 transition duration-300 hover:brightness-90 dark:bg-neutral-900"
+      className="group relative max-md:w-fit flex-1 cursor-pointer rounded-2xl  bg-neutral-300/60 p-1 transition duration-300 hover:brightness-90 dark:bg-neutral-900"
     >
       <div className="relative h-24 w-24 overflow-hidden rounded-2xl md:h-auto md:w-full md:aspect-square">
         {photos.map((photo, i) => (
@@ -46,7 +46,7 @@ export function AvatarSwitcher() {
           />
         ))}
       </div>
-      <span className="pointer-events-none absolute -bottom-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full border border-b-2order bg-background text-neutral-500 opacity-70 shadow-sm transition-all duration-300 group-hover:opacity-100 group-hover:rotate-180 dark:text-neutral-400">
+      <span className="pointer-events-none absolute -bottom-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full  bg-background text-neutral-500 opacity-70 shadow-sm transition-all duration-300 group-hover:opacity-100 group-hover:rotate-180 dark:text-neutral-400">
         <Shuffle className="size-3" strokeWidth={2} />
       </span>
     </button>
