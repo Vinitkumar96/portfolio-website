@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import {
-  Geist,
   Geist_Mono,
   Playfair_Display,
   Instrument_Serif,
   Roboto_Slab,
+  Inter,
 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
@@ -12,8 +12,8 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -54,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${instrumentSerif.variable} ${robotoSlab.variable} antialiased`}
+        className={`${inter.variable} ${geistMono.variable} ${playfairDisplay.variable} ${instrumentSerif.variable} ${robotoSlab.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -66,11 +66,7 @@ export default function RootLayout({
           {children}
           <Analytics />
         </ThemeProvider>
-        <Script
-          src="https://louisabraham.github.io/nekojs/neko.js"
-          data-autostart
-          strategy="afterInteractive"
-        />
+      
       </body>
     </html>
   );

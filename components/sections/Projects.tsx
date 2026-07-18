@@ -30,7 +30,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           handleCardClick();
         }
       }}
-      className="grayscale hover:grayscale-25 w-full cursor-pointer rounded-xl border border-neutral-300/90 bg-neutral-100/50 p-2 transition-all  dark:border-neutral-800 dark:bg-neutral-900/20"
+      className="grayscale hover:grayscale-25 w-full cursor-pointer rounded-xl  border-neutral-300/90 bg-neutral-100/50 p-2 transition-all  dark:border-neutral-800 dark:bg-neutral-900/20"
     >
       <div className="overflow-hidden rounded-lg p-2">
         <div className="relative aspect-16/10 w-full overflow-hidden rounded-md bg-white/80 dark:bg-neutral-950/70">
@@ -44,9 +44,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
       </div>
 
-      <div className="px-2 pt-2 pb-1 instrument-serif">
+      <div className="px-2 pt-2 pb-1">
         <div>
-          <h2 className="text-xl  pt-1.5 z-20">{project.title}</h2>
+          <h2 className="instrument-serif text-2xl pt-1.5 z-20">{project.title}</h2>
           <p className=" text-[15px] text-black  tracking-wide  dark:text-neutral-200">
             {project.description}
           </p>

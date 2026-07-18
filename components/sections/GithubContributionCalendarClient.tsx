@@ -57,7 +57,7 @@ export function GithubContributionCalendarClient({
   }
 
   return (
-    <div className="w-full overflow-x-auto sm:overflow-x-hidden">
+    <div className="no-scrollbar w-full overflow-x-auto sm:overflow-x-hidden">
       <div className="min-w-175 px-1 pb-1 pt-2 sm:min-w-0 sm:px-4">
         <ActivityCalendar
           data={data}

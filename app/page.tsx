@@ -1,30 +1,32 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   Stack,
   Projects,
   Experience,
   GithubContributions,
+  Connect,
 } from "@/components/sections";
 import { FlipWords } from "@/components/ui/flip-words";
 import { VerifiedIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { SiteChrome } from "@/components/site";
+import { SiteChrome, AvatarSwitcher } from "@/components/site";
 
 const words = ["Engineer", "Fullstack dev", "Web dev", "Mobile dev", "devops"];
 
 const edge =
-  "border-neutral-300 dark:border-neutral-700/80 border-dashed border-x-1";
+  "border-neutral-300 dark:border-neutral-800/60 border-dashed border-x-2";
 
 export default function Page() {
   return (
-    <div className="instrument-serif w-full min-h-screen max-md:p-1">
+    <div className="w-full min-h-screen max-md:p-1">
       {/* navbar */}
-      <div className="mx-auto max-w-2xl px-4 pt-3 border-neutral-300 dark:border-neutral-700/80 border-dashed border-x">
+      <div className="sticky top-0 z-40 mx-auto max-w-3xl border-x-2 border-b-2 border-dashed border-neutral-300 bg-background/80 px-4 pt-3 pb-3 backdrop-blur-md dark:border-neutral-800/60">
         <div className="flex items-center justify-between w-full">
           {/* Left*/}
           <Link href={"/"}>
-            <div className="instrument-serif text-xl font-semibold">Vinit.</div>
+            <div className="instrument-serif text-2xl font-semibold">
+              Vinit.
+            </div>
           </Link>
 
           {/* Righ */}
@@ -36,7 +38,7 @@ export default function Page() {
               <Link href="#projects">projects</Link>
             </Button>
             <Button variant="ghost" size="sm">
-              <Link href="#connect">connect</Link>
+              <Link href="#contact">contact</Link>
             </Button>
             <SiteChrome />
           </div>
@@ -44,37 +46,27 @@ export default function Page() {
       </div>
 
       {/* vinit kumar intro */}
-      <div className={`mx-auto max-w-2xl border-x ${edge} px-4 py-6`}>
-        <div className="rounded-2xl border border-neutral-300 border-t-neutral-300/35 bg-neutral-300/10 p-6 dark:bg-neutral-900/20 dark:border-neutral-600/70 dark:border-t-neutral-600/40">
+      <div className={`mx-auto max-w-3xl  ${edge} px-4 py-6`}>
+        <div className="rounded-2xl   bg-panel p-6 ">
           <div className="flex flex-col md:flex-row md:items-center">
-            <div className="group max-md:w-fit flex-1 cursor-pointer rounded-2xl border border-border bg-neutral-300/60 p-1 transition duration-300 hover:brightness-90 dark:bg-neutral-900">
-              <div className="relative h-24 w-24 overflow-hidden rounded-2xl md:h-auto md:w-full md:aspect-square">
-                <Image
-                  src="/vinitbabu.png"
-                  fill
-                  sizes="(max-width: 768px) 96px, 100vw"
-                  alt="vinit pic"
-                  className="object-cover grayscale"
-                />
-              </div>
-            </div>
+            <AvatarSwitcher />
 
             <div className="flex-5 flex-col pt-2 md:pl-4 md:pt-0">
-              <h1 className="mb-0.5 flex items-center gap-2 text-3xl font-semibold instrument-serif">
+              <h1 className="mb-0.5 flex items-center gap-2 text-4xl font-semibold instrument-serif">
                 Vinit kumar
                 <VerifiedIcon className="mt-1" />
               </h1>
-              <div className="pl-0.5 text-[16px] text-neutral-600 dark:text-neutral-300">
+              <div className="pl-0.5 text-[16px] font-semibold text-neutral-700 dark:text-neutral-200">
                 <FlipWords words={words} />
               </div>
-              <p className="pl-0.5 font-normal tracking-wider text-sm  md:text-[16px] text-neutral-500 dark:text-neutral-400">
+              <p className="pl-0.5 font-normal tracking-wide text-sm  md:text-[16px] text-neutral-500 dark:text-neutral-400">
                 I build and{" "}
-                <span className="font-light dark:text-neutral-200 text-neutral-900">
+                <span className="font-semibold underline decoration-neutral-400 underline-offset-2 dark:text-neutral-200 dark:decoration-neutral-600 text-neutral-900">
                   ship products
                 </span>{" "}
                 at high speed, putting in the hours to turn ideas into working
-                software. currently building projects for web and mobile and
-                messing with devops and ai
+                software. Currently building projects for web and mobile and
+                messing with devops and ai.
               </p>
             </div>
           </div>
@@ -83,14 +75,16 @@ export default function Page() {
 
       <Experience />
 
+      <Connect />
+
       {/* projects part */}
       <div
         id="projects"
-        className="w-full border-t border-dashed border-neutral-300 dark:border-neutral-700/80"
+        className="w-full border-t-2 border-dashed border-neutral-300 dark:border-neutral-800/60"
       >
-        <div className={`mx-auto max-w-2xl border-x ${edge} px-4 py-6`}>
-          <div className="mb-2 flex items-center justify-between border-t border-dashed border-neutral-300 px-4 py-3 dark:border-neutral-600/80">
-            <h2 className="instrument-serif text-2xl font-bold">Projects</h2>
+        <div className={`mx-auto max-w-3xl border-x-2 ${edge} px-4 py-6`}>
+          <div className="mb-2 flex items-center justify-between">
+            <h2 className="instrument-serif text-3xl font-bold">Projects</h2>
             <Link href="https://github.com/Vinitkumar96" target="_blank">
               <p className="group relative inline-flex items-center gap-1.5 px-4 py-2 font-mono text-xs text-neutral-600 transition-colors sm:px-5 sm:text-sm dark:text-neutral-300">
                 <span
@@ -113,61 +107,19 @@ export default function Page() {
       </div>
 
       {/* tools and github contribution */}
-      <div className="w-full border-y border-dashed border-neutral-300 dark:border-neutral-700/80">
-        <div className={`mx-auto max-w-2xl border-x ${edge} px-4 pb-1 pt-4`}>
+      <div className="w-full border-y-2 border-dashed border-neutral-300 dark:border-neutral-800/60">
+        <div className={`mx-auto max-w-3xl border-x-2 ${edge} px-4 pb-1 pt-4`}>
           <div>
-            <h2 className="instrument-serif  ml-4 text-xl">I Tinker them</h2>
+            <h2 className="instrument-serif  ml-4 text-2xl">I Tinker them</h2>
             <Stack />
             <GithubContributions />
           </div>
         </div>
       </div>
 
-      {/*connect with me section */}
-      <div
-        id="connect"
-        className={`text-center mx-auto max-w-2xl ${edge} pb-2 `}
-      >
-        <p className="instrument-serif text-5xl py-2">Let's work together.</p>
-        <p className="instrument-serif text-md mb-2  max-w-2xl mx-auto dark:text-neutral-300 text-neutral-800">
-          I'm always looking forward to collaborating on exciting projects and
-          exploring new opportunities. Feel free to reach out if you have an
-          idea or simply want to chat about tech.
-        </p>
-        <div className="flex justify-center gap-x-3 mb-2 text-neutral-300">
-          <Button variant="secondary">
-            <Link href="mailto:vinitkumar93341@gmail.com">email</Link>
-          </Button>
-          <Button variant="secondary">
-            <Link
-              href={"https://www.linkedin.com/in/vinit-kumar-b14421378/"}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Linkedin
-            </Link>
-          </Button>
-          <Button variant={"secondary"}>
-            <Link
-              href={"https://github.com/Vinitkumar96"}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              github
-            </Link>
-          </Button>
-        </div>
-        <p className="dark:text-neutral-300 text-neutral-800">
-          Currently available for freelance work and full‑time opportunities
-          Response time: Usually within 24 hours
-        </p>
-      </div>
-
-      {/* f o o t e r baby */}
-      <div className="border max-w-2xl mx-auto rounded-sm py-2">
-        <div className="max-w-2xl mx-auto text-center ">
-          <p className="text-neutral-600">Be hungry be foolish 😋</p>
-        </div>
+      {/* closing cta */}
+      <div className={`text-center mx-auto max-w-3xl ${edge} pb-2 `}>
+        <p className="instrument-serif text-6xl py-2">Arise.</p>
       </div>
     </div>
   );

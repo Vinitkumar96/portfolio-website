@@ -13,7 +13,7 @@ const GithubContributions = async () => {
   return (
     <div className="mb-3">
       <div className=" flex flex-wrap items-end justify-between gap-2 pl-4 pr-2">
-        <h2 className="text-xl instrument-serif">GitHub activity</h2>
+        <h2 className="text-2xl instrument-serif">GitHub activity</h2>
         <Link
           href={`https://github.com/${GITHUB_USER}`}
           target="_blank"
