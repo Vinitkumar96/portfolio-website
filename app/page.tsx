@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Stack,
   Projects,
@@ -9,7 +10,7 @@ import {
 import { FlipWords } from "@/components/ui/flip-words";
 import { VerifiedIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { SiteChrome, AvatarSwitcher } from "@/components/site";
+import { SiteChrome } from "@/components/site";
 
 const words = ["Engineer", "Fullstack dev", "Web dev", "Mobile dev", "devops"];
 
@@ -20,7 +21,7 @@ export default function Page() {
   return (
     <div className="w-full min-h-screen max-md:p-1">
       {/* navbar */}
-      <div className="sticky top-0 z-40 mx-auto max-w-3xl border-x-2 border-b-2 border-dashed border-neutral-300 bg-background/80 px-4 pt-3 pb-3 backdrop-blur-md dark:border-neutral-800/60">
+      <div className="sticky top-0 z-40 mx-auto max-w-3xl border-x-2 border-b-2 border-dashed border-neutral-300 bg-background/80 px-4 pt-3 pb-1 backdrop-blur-md dark:border-neutral-800/60">
         <div className="flex items-center justify-between w-full">
           {/* Left*/}
           <Link href={"/"}>
@@ -46,30 +47,54 @@ export default function Page() {
       </div>
 
       {/* vinit kumar intro */}
-      <div className={`mx-auto max-w-3xl  ${edge} px-4 py-6`}>
-        <div className="rounded-2xl   bg-panel p-6 ">
-          <div className="flex flex-col md:flex-row md:items-center">
-            <AvatarSwitcher />
+      <div className={`mx-auto max-w-3xl  ${edge} px-2 pb-4 `}>
+        <div className="relative rounded-2xl   bg-panel p-6 ">
+          {/* banner */}
+          <div className="relative z-0 aspect-[16/5] w-full overflow-hidden rounded-2xl">
+            <Image
+              src="/banner/hero.jpg"
+              alt="banner"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 720px"
+              className="object-cover brightness-[0.9] dark:brightness-[0.3] "
+            />
+          </div>
 
-            <div className="flex-5 flex-col pt-2 md:pl-4 md:pt-0">
-              <h1 className="mb-0.5 flex items-center gap-2 text-4xl font-semibold instrument-serif">
+          {/* avatar overlapping banner + name */}
+          <div className="relative z-10 flex items-end  gap-4 -mt-14 md:-mt-16 bg-neutral-300/50  dark:bg-neutral-600/10 rounded-b-2xl">
+            <div className="w-fit shrink-0 rounded-2xl bg-neutral-300/60 p-1 shadow-sm ring-1 ring-black/5 dark:bg-neutral-900 dark:ring-white/10">
+              <div className="relative h-24 w-24 overflow-hidden rounded-2xl md:h-28 md:w-28">
+                <Image
+                  src="/vinit.png"
+                  alt="Vinit kumar"
+                  fill
+                  sizes="(max-width: 768px) 96px, 112px"
+                  className="object-cover grayscale"
+                />
+              </div>
+            </div>
+
+            <div className="flex-col md:mb-3 mb-2">
+              <h1 className="flex items-center gap-2 text-4xl md:text-5xl font-semibold instrument-serif dark:text-white text-black">
                 Vinit kumar
                 <VerifiedIcon className="mt-1" />
               </h1>
               <div className="pl-0.5 text-[16px] font-semibold text-neutral-700 dark:text-neutral-200">
                 <FlipWords words={words} />
               </div>
-              <p className="pl-0.5 font-normal tracking-wide text-sm  md:text-[16px] text-neutral-500 dark:text-neutral-400">
-                I build and{" "}
-                <span className="font-semibold underline decoration-neutral-400 underline-offset-2 dark:text-neutral-200 dark:decoration-neutral-600 text-neutral-900">
-                  ship products
-                </span>{" "}
-                at high speed, putting in the hours to turn ideas into working
-                software. Currently building projects for web and mobile and
-                messing with devops and ai.
-              </p>
             </div>
           </div>
+
+          <p className="pl-0.5 pt-4 font-normal tracking-wide text-sm  md:text-[16px] text-neutral-500 dark:text-neutral-400">
+            I build and{" "}
+            <span className="font-semibold underline decoration-neutral-400 underline-offset-2 dark:text-neutral-200 dark:decoration-neutral-600 text-neutral-900">
+              ship products
+            </span>{" "}
+            at high speed, putting in the hours to turn ideas into working
+            software. Currently building projects for web and mobile and
+            messing with devops and ai.
+          </p>
         </div>
       </div>
 
